@@ -16,11 +16,3 @@
 ; A = pi * (R^2 - r^2)
 
 (area-of-ring 2 1)
-
-; There is another way of defining this
-; The area of ring equals to the area of the bigger circle minus the area of the smaller circle.
-(define (2ndWay R r)
-  (- (area-of-circle R) (area-of-circle r)))
-
-(2ndWay 2 1)
-; The answer should be the same
