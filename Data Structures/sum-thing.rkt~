@@ -11,7 +11,7 @@
   (cond
     [(number? n) n]
     [(and (number? (thing-a n)) (number? (thing-b n))) (+ (thing-a n) (thing-b n))]
-    [(and (empty? (thing-a n)) (empty? (thing-b n))) 0]
-    [(and (number? (thing-a n)) (empty? (thing-b n))) (thing-a n)]
-    [(and (empty? (thing-a n)) (number? (thing-b n))) (thing-b n)]
     [true (+ (sum-thing (thing-a n)) (sum-thing (thing-b n)))]))
+
+
+
