@@ -14,9 +14,3 @@
 ; Get the 2nd variable
 (posn-y (make-posn 14 15))
 
-; Since we are calculating the distance to origin, we assume that
-; (and (number? (posn-x r-posn)) (number? (posn-y r-posn)))
-(define (distance-to-0 r-posn)
-  (sqrt (+ (sqr (posn-x r-posn)) (sqr (posn-y r-posn)))))
-
-(distance-to-0 (make-posn 14 15))
