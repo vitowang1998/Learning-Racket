@@ -1,6 +1,6 @@
 ;; The first three lines of this file were inserted by DrRacket. They record metadata
 ;; about the language level of this file in a form that our tools can easily process.
-#reader(lib "htdp-beginner-reader.ss" "lang")((modname list) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname Untitled1) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
 ;; We use structure when we know the number of pieces of data we need to combine.
 ;; However, when we don't know the number of data we need to combine, we use a list.
 
@@ -49,31 +49,5 @@ empty
 (rest my-list)
 (cdr my-list)
 
-my-list
-
-'---------------------------------------------------------------
-
-(list 1 2 3 4 5)
 
 
-
-;; ex1
-;; Create a function that adds up 3 numbers in a list
-(define (addNum l)
-  (+ (first l) (first (rest l)) (first (rest (rest l)))))
-
-(addNum (list 1 2 3))
-(addNum (list 3 5 7))
-
-
-
-;; ex2
-;; test if the content of symbol is a correct one
-(define ex2 (list 'right 'wrong))
-
-(define (test l)
-  (cond
-   [(eq? (first l) 'right) "The first symbol is right"]
-   [(eq? (rest l) 'right) "The second symbol is right"]))
-                             
-(test ex2)
