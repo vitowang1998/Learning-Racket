@@ -4,6 +4,8 @@
 ;; error
 
 
+
+;; O(n) = 0
 (define (sampleFunction inputNum)
   (cond
     [(number? inputNum) inputNum]
