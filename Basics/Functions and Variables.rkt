@@ -3,7 +3,7 @@
 ;; How to define (declare) a variable
 
 ;; This is a function computes the area of a circle given its radius
-;; O(n) = 0
+;; O(n) = 1
 (define (area-of-circle r)
   (* pi (sqr r)))
 

@@ -5,7 +5,7 @@
 
 
 
-;; O(n) = 0
+;; O(n) = 1
 (define (sampleFunction inputNum)
   (cond
     [(number? inputNum) inputNum]
