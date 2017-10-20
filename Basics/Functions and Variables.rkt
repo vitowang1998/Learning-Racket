@@ -12,7 +12,7 @@
 
 
 ;; If we have a ring and we want to know its area
-;; O(n) = 0
+;; O(n) = 1
 (define (area-of-ring R r)
   (* pi (- (sqr R) (sqr r))))
 ;; A = pi * (R^2 - r^2)
@@ -22,7 +22,7 @@
 ;; There is another way of defining this
 ;; The area of ring equals to the area of the bigger circle minus the area of the smaller circle.
 
-;; O(n) = 0
+;; O(n) = 1
 (define (2ndWay R r)
   (- (area-of-circle R) (area-of-circle r)))
 
