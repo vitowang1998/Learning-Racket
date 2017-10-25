@@ -5,8 +5,8 @@
 
 
 ;; Count the number of nodes in a tree
-;; O(n) = n^2
-(define (count-node t)
+;; Running time: O(n^2)
+(define (count-node/tree t)
   (cond
     [(empty? t) 0]
     [else (+ 1 (count-node (node-left t)) (count-node (node-right t)))]))
