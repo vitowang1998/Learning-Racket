@@ -1,8 +1,16 @@
 #lang racket
 
+;; A shorter version to check if all the elements in a list are same
+;; O(n)
+;; the list must be len. > 1, must be list of numbers
+(define (all-elements-same?/list lst)
+  (apply = lst))
+
+
 
 ;; A function to check if all the elements in a list are same
 ;; O(n)
+;; the list must be len. > 1, must be list of numbers
 (define (all-elements-same?/list lst)
   (cond
     [(empty? lst) true] ; you can modify this by demands
