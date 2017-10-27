@@ -57,7 +57,6 @@ my-list
 
 
 
-;; ex1
 ;; Create a function that adds up 3 numbers in a list
 (define (addNum l)
   (+ (first l) (first (rest l)) (first (rest (rest l)))))
