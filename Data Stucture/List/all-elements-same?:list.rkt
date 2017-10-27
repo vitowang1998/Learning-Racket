@@ -1,6 +1,7 @@
 #lang racket
-;; A function to check if all the elements in a list are same
 
+
+;; A function to check if all the elements in a list are same
 ;; O(n)
 (define (all-elements-same?/list lst)
   (cond
