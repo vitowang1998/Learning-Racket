@@ -4,9 +4,8 @@
 
 ;; A function to get the size of a list
 ;; O(n) 
-(define (getsize-list lst)
+(define (size/list lst)
   (cond
     [(empty? lst) 0]
     [else (add1 (getsize-list (cdr lst)))]))
 
-; T(n) = n + 1
