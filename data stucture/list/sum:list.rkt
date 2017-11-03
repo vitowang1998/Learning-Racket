@@ -6,3 +6,12 @@
   (cond
     [(empty? lst) 0]
     [else (+ (car lst) (add/list (cdr lst)))]))
+
+
+
+(define (sum/list-acc lst acc)
+  (cond
+    [(empty? lst) acc]
+    [else (sum/list-acc (rest lst) (+ (first lst) acc))]))
+
+
