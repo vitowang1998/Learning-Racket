@@ -5,8 +5,9 @@
 
 ;; A function to determine if e is in lst
 ;; O(n)
-(define (member e lst)
+;; type + list -> bool
+(define (member? e lst)
   (cond
     [(empty? lst) false]
     [(= e (car lst)) true]
-    [else (member e (cdr lst))]))
+    [else (member? e (cdr lst))]))
