@@ -11,4 +11,5 @@
 
 (foldr + 0 (build-list 4 values))
 (foldr/list + 0 (build-list 4 values))
-;; 
+;; (+ 0 (foldr + 0 (1 2 3)))
+;; (+ 0 (+ 
