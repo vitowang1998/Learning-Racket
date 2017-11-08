@@ -2,7 +2,9 @@
 ;; about the language level of this file in a form that our tools can easily process.
 #reader(lib "htdp-beginner-abbr-reader.ss" "lang")((modname take) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
 ;; O(n)
-(define (take lst n)
+;; Take the first n terms in a list
+;; list + n -> list
+(define (take-first-n-terms/list lst n)
   (cond
     [(zero? n) empty]
-    [else (cons (car lst) (take (cdr lst) (sub1 n)))]))
+    [else (cons (car lst) (take-first-n-terms/list (cdr lst) (sub1 n)))]))
