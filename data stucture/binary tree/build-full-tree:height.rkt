@@ -1,15 +1,15 @@
 ;; The first three lines of this file were inserted by DrRacket. They record metadata
 ;; about the language level of this file in a form that our tools can easily process.
-#reader(lib "htdp-beginner-reader.ss" "lang")((modname pow-n) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname create-full-tree) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
 (define-struct node (left right))
 
 
 ;; Create a full tree with height h
 ;; O(2^n)
-(define (create-full-tree h)
+(define (build-full-tree/height h)
   (cond
     [(zero? h) empty]
-    [else (make-node (create-full-tree (sub1 h)) (create-full-tree (sub1 h)))]))
+    [else (make-node (build-full-tree/height (sub1 h)) (build-full-tree/height (sub1 h)))]))
 
 
 ;; height of tree    # of nodes
@@ -24,6 +24,5 @@
 ;;       n            (2^n - 1)
 
 
-
-;; (time (create-full-tree 20))
+(build-full-tree/height 20)
 ;; (time (create-full-tree 21))
