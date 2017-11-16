@@ -4,6 +4,7 @@
 (define-struct node (left right key))
 
 
+
 ;; insert a number into a binary search tree
 ;; O(n) in worst case
 ;; O(log n) usually
