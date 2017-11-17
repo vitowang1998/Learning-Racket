@@ -1,5 +1,8 @@
 #lang racket
-(provide insert/bst leaf?/bst num-member?/bst)
+(provide insert/bst
+         leaf?/bst
+         num-member?/bst
+         get-min/bst)
 
 (define-struct node (left right key))
 
@@ -43,16 +46,26 @@
 
 ;; ----------------------------------------------------------
 
+;; A function that gets the minimum value of a bst
+;; average O(log n)
+;; get-min/bst: bst -> number
+(define (get-min/bst t)
+  (cond
+    [(empty? t) (error 'get-min/bst "Expected a bst but given empty.")]
+    [(number? t) (error 'get-min/bst "Expected a bst but given a number.")]
+    [(empty? (node-left t)) (node-key t)]
+    [else (get-min/bst (node-left t))]))
+
 
 ;; (insert/bst): insert a number into a binary search tree
 ;; (leaf?/bst): check if a node is a leaf of a bst
-;; (num-member?/bst): check if a number is a member of a sbt.
+;; (num-member?/bst): check if a number is a member of a bst.
+;; (get-min/bst): get the minimum of a bst.
 ;; ------
 ;; (delete)
 ;; (bst?)
 ;; (list->bst)
 ;; (bst->list)
-;; (get-min/bst)
 ;; (get-max/bst)
 ;; (get-before/bst)
 ;; (get-after/bst)
