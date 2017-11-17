@@ -8,17 +8,17 @@
 ;; O(log n) usually
 ;; insert/bst: bst + int -> bst
 (define (insert/bst t n)
-  (cond
-    [(empty? t) (make-node empty empty n)]
-    [(= n (node-key t)) t]
-    [(< n (node-key t)) (make-node (insert/bst (node-left t) n) (node-right t) (node-key t))]
-    [else (make-node (node-left t) (insert/bst (node-right t) n) (node-key t))]))
-
+  (if (empty? t) (make-node empty empty n)
+      ; else
+      (let ([current (node-key t)])
+        (cond
+          [(= n current) t]
+          [(< n current) (make-node (insert/bst (node-left t) n) (node-right t) current)]
+          [else (make-node (node-left t) (insert/bst (node-right t) n) current)]))))
 
 ;; check if a node is a leaf of a bst
 ;; O(1)
 ;; leaf?/bst: node -> boolean
-;; special case: note that an empty tree is also a leaf here
 (define (leaf?/bst bst)
   (and (empty? (node-left bst))
        (empty? (node-right bst))))
