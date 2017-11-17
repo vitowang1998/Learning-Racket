@@ -1,7 +1,9 @@
 #lang racket
-(provide insert/bst leaf?/bst)
+(provide insert/bst leaf?/bst num-member?/bst)
 
 (define-struct node (left right key))
+
+;; ----------------------------------------------------------
 
 ;; insert a number into a binary search tree
 ;; O(n) in worst case
@@ -16,6 +18,8 @@
           [(< n current) (make-node (insert/bst (node-left t) n) (node-right t) current)]
           [else (make-node (node-left t) (insert/bst (node-right t) n) current)]))))
 
+;; ----------------------------------------------------------
+
 ;; check if a node is a leaf of a bst
 ;; O(1)
 ;; leaf?/bst: node -> boolean
@@ -23,13 +27,28 @@
   (and (empty? (node-left bst))
        (empty? (node-right bst))))
 
+;; ----------------------------------------------------------
+
+;; A function that checks if n is a member in a bst
+;; member?/bst: num + bst -> boolean
+;; O(log n)
+(define (num-member?/bst n t)
+  (if (empty? t) false
+      ; else
+      (let ([current (node-key t)])
+        (cond
+          [(= n current) true]
+          [(< n current) (num-member?/bst n (node-left t))]
+          [else (num-member?/bst n (node-right t))]))))
+
+;; ----------------------------------------------------------
 
 
 ;; (insert/bst): insert a number into a binary search tree
-;; (leaf?/bst): 
+;; (leaf?/bst): check if a node is a leaf of a bst
+;; (num-member?/bst): check if a number is a member of a sbt.
 ;; ------
 ;; (delete)
-;; (member?/bst)
 ;; (bst?)
 ;; (list->bst)
 ;; (bst->list)
