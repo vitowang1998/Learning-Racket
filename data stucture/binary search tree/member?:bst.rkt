@@ -3,6 +3,9 @@
 #reader(lib "htdp-beginner-reader.ss" "lang")((modname member?:bst) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
 (define-struct node (left right key))
 
+;; is n a member of bst?
+;; O(log2 n)
+;; bst + n -> boolean
 (define (member?/bst bst n)
   (if (empty? bst) false
       (let ([value (bst-node-val bst)])
