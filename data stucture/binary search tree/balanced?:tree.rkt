@@ -4,7 +4,7 @@
 
 ;; checks if a tree is balanced
 ;; O(n) where n is the size of tree
-;; 
+;; balanced?/tree: tree/bst -> boolean
 (define (balanced?/tree t)
   ;; Count the number of nodes in a tree
   ;; Running time: O(n)
