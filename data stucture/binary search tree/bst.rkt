@@ -3,7 +3,8 @@
          leaf?/bst
          num-member?/bst
          get-min/bst
-         full?/bst)
+         full?/bst
+         bst->list)
 
 (define-struct node (left right key))
 
@@ -85,7 +86,15 @@
     [(= (sub1 (expt 2 (get-height/tree t))) (count-node/tree t)) true]
     [else false]))
 
+;; -------------------------------------------------------------------------------------
 
+;; converts a bst to a list
+;; O(n) where n is the size of the tree
+;; bst->list: bst -> list
+(define (bst->list t)
+  (cond
+    [(empty? t) empty]
+    [else (append (bst->list (node-left t)) (cons (node-key t) (bst->list (node-right t))))]))
 
 
 ;; (insert/bst): insert a number into a binary search tree
@@ -93,11 +102,11 @@
 ;; (num-member?/bst): check if a number is a member of a bst.
 ;; (get-min/bst): get the minimum of a bst.
 ;; (full?/bst): is a bst full?
+;; (bst->list): converts a bst to a list
 ;; ------
 ;; (delete)
 ;; (bst?)
 ;; (list->bst)
-;; (bst->list)
 ;; (get-max/bst)
 ;; (get-before/bst)
 ;; (get-after/bst)
