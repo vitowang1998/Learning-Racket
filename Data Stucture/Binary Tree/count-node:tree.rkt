@@ -10,7 +10,7 @@
 (define (count-node/tree t)
   (cond
     [(empty? t) 0]
-    [else (+ 1 (count-node (node-left t)) (count-node (node-right t)))]))
+    [else (+ 1 (count-node/tree (node-left t)) (count-node/tree (node-right t)))]))
 
 
 
