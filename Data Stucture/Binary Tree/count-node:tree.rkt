@@ -5,7 +5,7 @@
 
 
 ;; Count the number of nodes in a tree
-;; Running time: O(n^2)
+;; Running time: O(n)
 ;; tree -> number
 (define (count-node/tree t)
   (cond
