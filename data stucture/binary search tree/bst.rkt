@@ -4,7 +4,8 @@
          num-member?/bst
          get-min/bst
          full?/bst
-         bst->list)
+         bst->list
+         list->bst)
 
 (define-struct node (left right key))
 
@@ -96,6 +97,18 @@
     [(empty? t) empty]
     [else (append (bst->list (node-left t)) (cons (node-key t) (bst->list (node-right t))))]))
 
+;; ------------------------------------------------------------------------------------
+
+;; this function converts a list to a bst
+;; O(n) where n is the size of list
+;; list->bst: list -> bst
+(define (list->bst lst)
+  (cond
+    [(empty? lst) empty]
+    [(= 1 (length lst)) (make-node empty empty (car lst))]
+    [else (insert/bst (list->bst (cdr lst)) (car lst))]))
+
+
 
 ;; (insert/bst): insert a number into a binary search tree
 ;; (leaf?/bst): check if a node is a leaf of a bst
@@ -103,10 +116,10 @@
 ;; (get-min/bst): get the minimum of a bst.
 ;; (full?/bst): is a bst full?
 ;; (bst->list): converts a bst to a list
+;; (list->bst): converts a list to a bst
 ;; ------
 ;; (delete)
 ;; (bst?)
-;; (list->bst)
 ;; (get-max/bst)
 ;; (get-before/bst)
 ;; (get-after/bst)
