@@ -12,3 +12,10 @@
   (cond
     [(empty? t) 0]
     [else (+ 1 (max (get-height/tree (node-left t)) (get-height/tree (node-right t))))]))
+
+
+;; another way of doing it
+(define (height t acc)
+  (cond
+    [(empty? t) acc]
+    [else (max (height (node-left t) (add1 acc)) (height (node-right t) (add1 acc)))]))
