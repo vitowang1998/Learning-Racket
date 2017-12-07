@@ -31,3 +31,21 @@
     [(> n (node-key t)) (make-node (node-left t) (delete/bst (node-right t) n) (node-key t))]
     [else (make-node (delete/bst (node-left t) n) (node-right t) (node-key t))]))
 
+
+
+
+;; another way to delete a node
+(define (delete-bst t n)
+  (cond
+    [(empty? t) empty]
+    [(= n (node-key t)) (combine-bst (node-left t) (node-right t))]
+    [(> n (node-key t)) (make-node (node-left t) (delete-bst (node-right t) n) (node-key t))]
+    [else (make-node (delete-bst (node-left t) n) (node-right t) (node-key t))]))
+
+
+;; append two bsts together
+;; O(n) where n is the size of t2
+;; combine/bst: bst + bst -> bst    
+(define (combine-bst t1 t2)
+  (if (empty? t2) t1
+      (combine-bst (combine-bst (insert-bst t1 (node-key t2)) (node-left t2)) (node-right t2))))
