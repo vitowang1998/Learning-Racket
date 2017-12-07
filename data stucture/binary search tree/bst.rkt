@@ -6,7 +6,8 @@
          full?/bst
          bst->list
          list->bst
-         delete/bst)
+         delete/bst
+         append/bst)
 
 (define-struct node (left right key))
 
@@ -112,35 +113,23 @@
 ;; ------------------------------------------------------------------------------------
 
 ;; delete a value from a bst
-;; O(log2 n), worst case O(n/2)
+;; O(log2 n), worst case O(n)
 ;; delete/bst: bst + number -> bst
 (define (delete/bst t n)
-  
-  ;; check if a node is a leaf of a bst
-  ;; O(1)
-  ;; leaf?/bst: node -> boolean
-  (define (leaf?/bst bst)
-    (and (empty? (node-left bst))
-         (empty? (node-right bst))))
-
-  ;; removes the root of a bst, only used when we have located the value we want to delete
-  ;; O(log2 n)
-  ;; remove-root/bst: bst -> bst
-  (define (remove-root/bst t)
-    (cond
-      [(empty? t) t]
-      [(leaf?/bst t) empty]
-      [(empty? (node-left t)) (node-right t)]
-      [(empty? (node-right t)) (node-left t)]
-      [else (make-node (node-left t) (remove-root/bst (node-right t)) (node-key t))]))
-  
   (cond
     [(empty? t) empty]
-    [(= n (node-key t)) (remove-root/bst t)]
+    [(= n (node-key t)) (append/bst (node-left t) (node-right t))]
     [(> n (node-key t)) (make-node (node-left t) (delete/bst (node-right t) n) (node-key t))]
     [else (make-node (delete/bst (node-left t) n) (node-right t) (node-key t))]))
 
 ;; ------------------------------------------------------------------------------------
+
+;; append two bsts together
+;; O(n) where n is the size of t1
+;; combine/bst: bst + bst -> bst
+(define (append/bst t1 t2)
+  (if (empty? t1) t2
+      (append/bst (append/bst (node-left t1) (insert/bst t2 (node-key t1))) (node-right t1))))
 
 ;; (insert/bst): insert a number into a binary search tree
 ;; (leaf?/bst): check if a node is a leaf of a bst
@@ -149,12 +138,12 @@
 ;; (full?/bst): is a bst full?
 ;; (bst->list): converts a bst to a list
 ;; (list->bst): converts a list to a bst
-;; (delete/bst): delete an element from a bst
+;; (delete/bst): deletes an element from a bst
+;; (append/bst): combines two bsts together
 ;; ------
 ;; (bst?)
 ;; (get-max/bst)
 ;; (get-before/bst)
 ;; (get-after/bst)
-;; (append/bst)
 ;; (difference/bst)
 
